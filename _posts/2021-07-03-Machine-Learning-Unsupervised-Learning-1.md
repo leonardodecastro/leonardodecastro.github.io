@@ -520,7 +520,6 @@ player_data_df.head(2)
 
 
 
-
 ### 3) Split and scale data
 
 We do not have to split the dataset since this script regards unsupervised learning. Therefore, there is no target variable. Moreover, scaling is not required since the features are all in the same scale (between 0 and 100)
