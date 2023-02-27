@@ -128,7 +128,7 @@ plt.legend(bbox_to_anchor=(1, 0.5), loc="center left", fontsize=16)
 plt.show()
 ```
 
-![](/images/knn_1.png)
+![png](/images/knn_1.png)
 
 #### 4.3) Determine number of neighbors that optimizes precision 
 
@@ -176,7 +176,7 @@ for visualizer in visualizers_list_test:
   visualizer.finalize()
 ```
 
-![](/images/knn_2.png)
+![png](/images/knn_2.png)
 
 
 We can see that the metrics for the training and test set are fairly
