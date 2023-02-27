@@ -26,7 +26,7 @@ pd.options.mode.chained_assignment = None  # default='warn'
 
 ## 3) Install PostgreSQL
 
-### Colab is a linux environment. Thus, we can use linux commands to install  PostgreSQL on it
+### 3.1) Colab is a linux environment. Thus, we can use linux commands to install  PostgreSQL on it
 
 You might need to run the following cell twice if the database is not created when you run it just once.
 
@@ -52,7 +52,7 @@ You might need to run the following cell twice if the database is not created wh
     CREATE DATABASE
     
 
-### Setup necessary environmental variables
+### 3.2) Setup necessary environmental variables
 
 
 ```python
