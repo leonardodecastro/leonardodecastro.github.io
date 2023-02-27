@@ -1,4 +1,4 @@
-## Linear Models (Regularization)
+## Machine Learning 5 (Regularized Linear Models)
 
 > Multiple Linear Regression (OLS), Lasso Regression, Ridge Regression, Elastic Net Model, SGD Regressor and Regularization
 
