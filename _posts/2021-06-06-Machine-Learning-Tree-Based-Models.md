@@ -1,16 +1,12 @@
-# Tree-based algorithms (Hyperparameter Tuning)
+## Tree-based algorithms (Hyperparameter Tuning)
 
 > Decision Tree, Random Forest, Gradient Boost, XGboost, LightGBM, Catboost, Strategies to Fight Overfitting, Feature Importance Plots, Decision Trees Visualization, Random Search and Stratified K-fold for Cross Validation.
 
-- toc: true 
-- badges: true
-- comments: true
-- categories: [Tree-Based Algorithms, Hyperparameter Tuning, Machine Learning, Decision Tree Classifier, Random Forest Classifier, Gradient Boosting Classifier, Extreme Gradient Boosting Classifier, Light Gradient Boosting Classifier, Categorical Booting Classifier, Feature Importance, Tree-based Algorithm Visualizations, Overfitting Reduction, Xgboost, LightGBM, Catboost, RandomizedSearchCV, Overfitting]
-- image: images/tree_based_algorithms.png
+`Topics: [Tree-Based Algorithms, Hyperparameter Tuning, Machine Learning, Decision Tree Classifier, Random Forest Classifier, Gradient Boosting Classifier, Extreme Gradient Boosting Classifier, Light Gradient Boosting Classifier, Categorical Booting Classifier, Feature Importance, Tree-based Algorithm Visualizations, Overfitting Reduction, Xgboost, LightGBM, Catboost, RandomizedSearchCV, Overfitting]`
 
-## 1) Import libraries and define functions
+### 1) Import libraries and define functions
 
-### 1.1) Install libraries
+#### 1.1) Install libraries
 
 
 ```python
@@ -18,7 +14,7 @@
 !pip install catboost &> /dev/null
 ```
 
-### 1.2) Import Libraries
+#### 1.2) Import Libraries
 
 
 ```python
@@ -47,11 +43,11 @@ warnings.filterwarnings("ignore")
 plt.rcParams['font.family'] = 'DeJavu Serif'
 ```
 
-## 2) Exploratory Data Analysis (EDA)
+### 2) Exploratory Data Analysis (EDA)
 
 For the sake of this tutorial, we will not engage in extensive EDA. However, the visualization posts bring very detailed EDA analyses.
 
-### 2.1) Load File
+#### 2.1) Load File
 
 
 ```python
@@ -220,7 +216,7 @@ data.head(2)
 
 **A** = 'Age'  &ensp; |  &ensp; **S** = 'Sex'  &ensp; |  &ensp; **TCP** = 'Type of chest pain'  &ensp; |  &ensp; **RBP** = 'Resting blood pressure'  &ensp; |  &ensp; **C** = 'Cholesterol'  &ensp; |  &ensp; **BS** = 'Blood sugar'  &ensp; |  &ensp; **REE** = 'Resting electrocardiographic results'  &ensp; |  &ensp; **MHRA** =  'Maximum heart rate achieved'  &ensp; |  &ensp; **EIA** = 'Exercise induced angina'  &ensp; |  &ensp; **DIE** =  'ST depression induced by exercise'  &ensp; |  &ensp; **SPE** = 'Slope of the peak exercise ST segment'  &ensp; |  &ensp; **T** = 'Thalassemia'  &ensp; |  &ensp; **NMV** = 'Number of major vessels colored by flourosopy'  &ensp; |  &ensp; **HD** = 'Heart Disease?'
 
-## 3) Split and scale data
+### 3) Split and scale data
 
 - Classification trees do not require normalization since this is a type of tree-based algorithm which relies on rules. This means that classification trees are not affected by monotonic transformations of the input features.
 
@@ -237,13 +233,13 @@ y = data[ 'HD']
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state=42, stratify=y)
 ```
 
-## 4) Hyperparameter tuning (random search + cross validation)
+### 4) Hyperparameter tuning (random search + cross validation)
 
 - We seek to optimize recall to **minimize the number of false negatives** (failing to diagnose heart disease is a dire outcome). 
 - We use **early stopping** to prevent overfitting and speed up model training for the **XGboost, LightGBM and CatBoost** classifiers. 
 - When using classifiers, RandomizedSearchCV automatically considers stratified k-fold cross validation when a number is specified (cv=5).
 
-### 4.1) Decision Tree Classifier (Pruned)
+#### 4.1) Decision Tree Classifier (Pruned)
 
 We use the max-depth argument to prune the tree.
 
@@ -274,7 +270,7 @@ Find detailed information on each hyperparameter of decision tree classifiers on
 
 https://medium.com/@mohtedibf/indepth-parameter-tuning-for-decision-tree-6753118a03c3
 
-### 4.2) Random Forest Classifier
+#### 4.2) Random Forest Classifier
 
 
 ```python
@@ -300,7 +296,7 @@ print('Optimal hyperparameters: \n\n',best_parameters_model_2)
      {'random_state': 42, 'n_estimators': 200, 'min_weight_fraction_leaf': 0.3, 'min_samples_split': 4, 'min_samples_leaf': 4, 'min_impurity_decrease': 0.0, 'max_leaf_nodes': 30, 'max_features': 'auto', 'max_depth': 4, 'criterion': 'entropy', 'class_weight': 'balanced', 'ccp_alpha': 0}
     
 
-### 4.3) Gradient Boosting Classifier
+#### 4.3) Gradient Boosting Classifier
 
 
 ```python
@@ -326,7 +322,7 @@ print('Optimal hyperparameters: \n\n',best_parameters_model_3)
      {'subsample': 0.4, 'random_state': 42, 'n_estimators': 200, 'min_weight_fraction_leaf': 0.4, 'min_samples_split': 8, 'min_samples_leaf': 8, 'min_impurity_decrease': 0.0, 'max_leaf_nodes': 40, 'max_features': 'sqrt', 'max_depth': 6, 'loss': 'deviance', 'learning_rate': 0.15, 'criterion': 'mse', 'ccp_alpha': 0}
     
 
-### 4.4) Extreme Gradient Boosting Classifier
+#### 4.4) Extreme Gradient Boosting Classifier
 
 
 ```python
@@ -361,7 +357,7 @@ import xgboost as xgb
 from sklearn.model_selection import StratifiedKFold
 ```
 
-### 4.5) Light Gradient Boosting Classifier
+#### 4.5) Light Gradient Boosting Classifier
 
 
 ```python
@@ -393,7 +389,7 @@ The following pages provide good sources to read about how to prevent ovefitting
 - https://practicaldatascience.co.uk/machine-learning/how-to-tune-a-lightgbmclassifier-model-with-optuna
 
 
-### 4.6) Categorical Booting Classifier
+#### 4.6) Categorical Booting Classifier
 
 
 ```python
@@ -426,9 +422,9 @@ The following pages provide good sources to read about how to prevent ovefitting
 - https://www.kaggle.com/code/saurabhshahane/catboost-hyperparameter-tuning-with-optuna
 - https://www.kaggle.com/code/shivampanwar/catboost-and-hyperparameter-tuning-using-bayes
 
-## 5) Evaluation of optimal model metrics
+### 5) Evaluation of optimal model metrics
 
-### 5.1) Classif. Report, ROC Curve and Confusion Matrix (Decision Tree - Pruned)
+#### 5.1) Classif. Report, ROC Curve and Confusion Matrix (Decision Tree - Pruned)
 
 
 ```python
@@ -463,10 +459,10 @@ for visualizer in visualizers_list_test:
 ```
 
 
-![png](output_38_0.png)
+![png](/images/tree_based_algo_1.png)
 
 
-### 5.2) Classif. Report, ROC Curve and Confusion Matrix (Random Forest Classifier)
+#### 5.2) Classif. Report, ROC Curve and Confusion Matrix (Random Forest Classifier)
 
 
 ```python
@@ -501,10 +497,10 @@ for visualizer in visualizers_list_test:
 ```
 
 
-![png](output_40_0.png)
+![png](/images/tree_based_algo_2.png)
 
 
-### 5.3) Classif. Report, ROC Curve and Confusion Matrix (Gradient Boosting Classifier)
+#### 5.3) Classif. Report, ROC Curve and Confusion Matrix (Gradient Boosting Classifier)
 
 
 ```python
@@ -539,10 +535,10 @@ for visualizer in visualizers_list_test:
 ```
 
 
-![png](output_42_0.png)
+![png](/images/tree_based_algo_3.png)
 
 
-### 5.4) Classif. Report, ROC Curve and Confusion Matrix (Extreme Gradient Boosting Classifier)
+#### 5.4) Classif. Report, ROC Curve and Confusion Matrix (Extreme Gradient Boosting Classifier)
 
 
 ```python
@@ -578,10 +574,10 @@ for visualizer in visualizers_list_test:
 ```
 
 
-![png](output_44_0.png)
+![png](/images/tree_based_algo_4.png)
 
 
-### 5.5) Classif. Report, ROC Curve and Confusion Matrix (Light Gradient Boosting Classifier)
+#### 5.5) Classif. Report, ROC Curve and Confusion Matrix (Light Gradient Boosting Classifier)
 
 
 ```python
@@ -617,10 +613,10 @@ for visualizer in visualizers_list_test:
 ```
 
 
-![png](output_46_0.png)
+![png](/images/tree_based_algo_5.png)
 
 
-### 5.6) Classif. Report, ROC Curve and Confusion Matrix (Categorical Boosting Classifier)
+#### 5.6) Classif. Report, ROC Curve and Confusion Matrix (Categorical Boosting Classifier)
 
 
 ```python
@@ -656,17 +652,17 @@ for visualizer in visualizers_list_test:
 ```
 
 
-![png](output_48_0.png)
+![png](/images/tree_based_algo_6.png)
 
 
 - The ROC curve indicates that the classifiers outperform random classifier (the baselines).
 - **The Decision Tree Classifier presents high levels of ovefitting**. The other models did not present levels of underfitting or overfitting that are enough to cause any concern. **In part 6, we show how to prevent overfitting using other cross-validation techniques.** 
 
-## 6) Reduce overfitting using other cross-validation techniques
+### 6) Reduce overfitting using other cross-validation techniques
 
 - We use **repeated stratified K-Fold as the cross-validation** strategy solely for the **decision tree classifier** to avoid overfitting. We did not use this strategy for other classifiers since they did not overfit using the stratified k-fold strategy, which is a less time-consuming technique.
 
-### 6.1) Hyperparameter tuning (random search + repeated stratified K-Fold cross validation)
+#### 6.1) Hyperparameter tuning (random search + repeated stratified K-Fold cross validation)
 
 
 ```python
@@ -694,7 +690,7 @@ print('Optimal hyperparameters: \n\n',best_parameters_model_1)
      {'splitter': 'random', 'random_state': 42, 'min_weight_fraction_leaf': 0.1, 'min_samples_split': 4, 'min_samples_leaf': 3, 'min_impurity_decrease': 0.0, 'max_leaf_nodes': 80, 'max_depth': 4, 'criterion': 'entropy', 'class_weight': 'balanced', 'ccp_alpha': 0}
     
 
-### 6.2) Evaluation of optimal model metrics
+#### 6.2) Evaluation of optimal model metrics
 
 
 ```python
@@ -729,12 +725,12 @@ for visualizer in visualizers_list_test:
 ```
 
 
-![png](output_55_0.png)
+![png](/images/tree_based_algo_7.png)
 
 
 **We can see that the overfitting issue was solved using repeated stratified K-Fold for cross validation**. 
 
-## 7) Feature importance plots for the optimal models
+### 7) Feature importance plots for the optimal models
 
 
 ```python
@@ -772,15 +768,15 @@ plt.show()
 ```
 
 
-![png](output_58_0.png)
+![png](/images/tree_based_algo_8.png)
 
 
 - The visualization has a **consistent color scheme** across plots so that conclusions regarding the most relevant features can be drawn. 
 - We can see that the **features "T", "TCP" and "NMV"** are often among the **most relevant predictors** of heart disease. 
 
-## 8) Visualize decision trees (Help clients understand machine learning)
+### 8) Visualize decision trees (Help clients understand machine learning)
 
-### 8.1) Visualization 1 - More complete visualization 
+#### 8.1) Visualization 1 - More complete visualization 
 
 
 ```python
@@ -798,11 +794,11 @@ Image(filename = 'tree.png')
 
 
 
-![png](output_62_0.png)
+![png](/images/tree_based_algo_9.png)
 
 
 
-### 8.2) Visualization 2 - Cleaner visualization
+#### 8.2) Visualization 2 - Cleaner visualization
 
 
 ```python
@@ -811,8 +807,7 @@ dtreeviz(model_1, x_data=X_train, y_data=y_train, feature_names=X.columns, title
 
 
 
-
-![svg](output_64_0.svg)
+![svg](/images/tree_based_algo_10.svg)
 
 
 
