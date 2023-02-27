@@ -1,12 +1,13 @@
-# SQL with Google Colab Tutorial 1
+## SQL with Google Colab Tutorial 1
 
 > PostgreSQL with Google Colab Tutorial 1
 
-- toc: true 
-- badges: true
-- comments: true
-- categories: [PostgreSQL wit Google Colab, SQL]
-- image: images/sql_1.png
+`Topics: [PostgreSQL wit Google Colab, SQL]`
+
+Here's the table of contents:
+
+* TOC
+{:toc}
 
 ## 1) Aknowledge the sources used for this tutorial
 
