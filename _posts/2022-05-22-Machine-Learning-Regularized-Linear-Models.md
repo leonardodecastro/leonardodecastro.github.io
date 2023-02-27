@@ -1,23 +1,24 @@
-# Linear Models (Regularization)
+## Linear Models (Regularization)
 
 > Multiple Linear Regression (OLS), Lasso Regression, Ridge Regression, Elastic Net Model, SGD Regressor and Regularization
 
 
-- toc: true 
-- badges: true
-- comments: true
-- categories: [OLS, Multiple Linear Regression, Lasso Regression, Ridge Regression, Elastic Net Model, SGD Regressor, regularization]
-- image: images/regularized_linear_models.png
+`Topics: [OLS, Multiple Linear Regression, Lasso Regression, Ridge Regression, Elastic Net Model, SGD Regressor, regularization]
 
- ## 1) Aknowledge the sources used for this tutorial
+Here's the table of contents:
+
+* TOC
+{:toc}
+
+### 1) Aknowledge the sources used for this tutorial
 
 The dataset source for this tutorial: https://www.kaggle.com/code/deepakdodi/lasso-and-ridge-hypertuning-over-gapminder-dataset/data
 
 **This dataset considers different features (i.e population, fertility, HIV, CO2,  child mortality & Female/Male BMI ) to predict life expectancy.**
 
-## 2) Import libraries 
+### 2) Import libraries 
 
-### 2.1) Import libraries
+#### 2.1) Import libraries
 
 
 ```python
@@ -37,13 +38,13 @@ from sklearn.linear_model import LinearRegression, LassoCV, RidgeCV, ElasticNetC
 simplefilter("ignore", category=ConvergenceWarning)
 ```
 
-## 3) Create dataset for the analysis
+### 3) Create dataset for the analysis
 
 - We will create a dataset to exemplify the use of regularization. We will do so by using enriching a real dataset with polynomial features.
 - We seek to simulate real-life datasets that often contain correlated features, which might lead multiple regression models to overfit. 
 - Regularization can help deal with the overfitting issue by performing feature selection which reduces variance but introduces bias. 
 
-### 3.1) Import dataset and incorporate polynomial features
+#### 3.1) Import dataset and incorporate polynomial features
 
 
 ```python
@@ -70,14 +71,14 @@ data_2 = pd.DataFrame(X, columns= new_names_columns_list)
 data_2['life'] = y
 ```
 
-### 3.2) Split the datasets
+#### 3.2) Split the datasets
 
 
 ```python
 train, test = train_test_split(data_2, test_size=0.2, random_state = 8)
 ```
 
-### 3.3) Scale the datasets
+#### 3.3) Scale the datasets
 
 
 ```python
@@ -97,9 +98,9 @@ X_test = test_scaled[ : , : -1]
 y_test = test_scaled[ : , -1:]
 ```
 
-## 4) Run Different Linear Models
+### 4) Run Different Linear Models
 
-### 4.1) Train the Linear Regression Model
+#### 4.1) Train the Linear Regression Model
 
 
 ```python
@@ -114,7 +115,7 @@ model_1.fit(X_train, y_train)
 
 
 
-### 4.2) Tune the Lasso Regression Model
+#### 4.2) Tune the Lasso Regression Model
 
 
 ```python
@@ -134,7 +135,7 @@ print('The optimal alpha value:',round(optimal_alpha_lasso,3))
     The optimal alpha value: 0.029
     
 
-### 4.3) Tune the Ridge Regression Model
+#### 4.3) Tune the Ridge Regression Model
 
 
 ```python
@@ -154,7 +155,7 @@ print('The optimal alpha value:', round(optimal_alpha_ridge,3))
     The optimal alpha value: 72.208
     
 
-### 4.4) Tune the Elastic Net Model
+#### 4.4) Tune the Elastic Net Model
 
 
 ```python
@@ -178,7 +179,7 @@ print('The optimal alpha value:', round(alpha,3))
     The optimal alpha value: 0.187
     
 
-### 4.5) Tune the SGD Regressor
+#### 4.5) Tune the SGD Regressor
 
 Let's tune the Stochastic Gradient Descent Regressor. This model is often useful for very large datasets. 
 
@@ -201,9 +202,9 @@ print('Optimal Hyperparameters: ',model_5.best_params_)
     Optimal Hyperparameters:  {'alpha': 0.004534878508128591, 'learning_rate': 'constant', 'loss': 'huber', 'penalty': 'l1', 'random_state': 42, 'tol': 0.1}
     
 
-## 5) Compare model metrics
+### 5) Compare model metrics
 
-### 5.1) Create a dataframe with model metrics
+#### 5.1) Create a dataframe with model metrics
 
 
 ```python
@@ -397,7 +398,7 @@ metrics_df.round(3)
 
 
 
-### 5.2) Visualize model metrics results
+#### 5.2) Visualize model metrics results
 
 
 ```python
@@ -445,7 +446,7 @@ plt.show()
 ```
 
 
-![png](output_31_0.png)
+![png](/images/linear_models_1.png)
 
 
 **Comparison of the algorithms (overview):**
