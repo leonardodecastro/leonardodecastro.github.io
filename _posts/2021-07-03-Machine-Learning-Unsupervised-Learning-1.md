@@ -315,7 +315,7 @@ player_data_df.to_csv('data_players.csv', encoding='utf-8')
 
 ```python
 player_data_df = pd.read_csv('https://raw.githubusercontent.com/leonardodecastro/data/main/data_players.csv', sep =',',encoding='utf-8').set_index('Position')
-player_data_df.head(2)
+player_data_df[['Player','Crossing','Finishing','Heading Accuracy','Short Passing','Volleys']].head(2)
 ```
 
 
