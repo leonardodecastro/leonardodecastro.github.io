@@ -4,9 +4,9 @@
 > KNN Algorithm Tuning, Grid Search, Cross Validation, Model Evaluation
 > Metrics, Classification Report, Confusion Matrix and ROC Curve.
 
--   Topics: \[KNN, Hyperparameter Tuning, Machine Learning, Grid
+`Topics: \[KNN, Hyperparameter Tuning, Machine Learning, Grid
     Search, Cross Validation, Model Evaluation Metrics, Classification
-    Report, Confusion Matrix, ROC Curve\]
+    Report, Confusion Matrix, ROC Curve\]`
 
 Here's the table of contents:
 
