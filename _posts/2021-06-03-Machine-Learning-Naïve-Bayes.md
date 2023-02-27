@@ -272,7 +272,7 @@ plt.show()
 ```
 
 
-![](/images/naive_bayes_1.png)
+![png](/images/naive_bayes_1.png)
 
 
 #### 4.3) Determine the alpha value that optimizes precision
@@ -321,7 +321,7 @@ for visualizer in visualizers_list_test:
 ```
 
 
-![](/images/naive_bayes_2.png)
+![png](/images/naive_bayes_2.png)
 
 
 We can see that the metrics for the training and test set are fairly similar, which indicates that there is **no problem with overfitting or underfitting**. Moreover, the ROC curve indicates that the classifier **outperforms a random classifier** (the baseline). 
