@@ -4,16 +4,13 @@
 > KNN Algorithm Tuning, Grid Search, Cross Validation, Model Evaluation
 > Metrics, Classification Report, Confusion Matrix and ROC Curve.
 
--   toc: true
--   badges: true
--   comments: true
--   categories: \[KNN, Hyperparameter Tuning, Machine Learning, Grid
+-   Topics: \[KNN, Hyperparameter Tuning, Machine Learning, Grid
     Search, Cross Validation, Model Evaluation Metrics, Classification
     Report, Confusion Matrix, ROC Curve\]
 
 Here's the table of contents:
 
-1. TOC
+TOC
 {:toc}
 
 ## 1) Import libraries
@@ -46,24 +43,24 @@ Original data source:
 data = pd.read_csv('https://raw.githubusercontent.com/leonardodecastro/data/main/winequality-white.csv')
 ```
 
-### 2.2) Create a definition for Good Wine {#22-create-a-definition-for-good-wine}
+### 2.2) Create a definition for Good Wine 
 
 ``` python
 data['Good Wine?'] = np.where(data['quality'] < 7, 0, 1)
 ```
 
-### 2.3) Drop original quality feature {#23-drop-original-quality-feature}
+### 2.3) Drop original quality feature 
 
 ``` python
 data.drop('quality', axis=1, inplace = True)
 ```
 
-## 3) Split and scale data {#3-split-and-scale-data}
+## 3) Split and scale data 
 
 Since we will use cross validation, there is not need for a validation
 set.
 
-### 3.1) Split the data frame into the training, validation and test sets {#31-split-the-data-frame-into-the-training-validation-and-test-sets}
+### 3.1) Split the data frame into the training, validation and test sets 
 
 ``` python
 # This line will disappear in the portfolio page
@@ -75,7 +72,7 @@ y = data['Good Wine?']
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42, stratify = y)
 ```
 
-### 3.2) Scale the dataset {#32-scale-the-dataset}
+### 3.2) Scale the dataset 
 
 ``` python
 # This line will disappear in the portfolio page
@@ -87,9 +84,9 @@ X_train_scaled = scaler.fit_transform(X_train)
 X_test_scaled = scaler.transform(X_test)
 ```
 
-## 4) Hyperparameter tuning {#4-hyperparameter-tuning}
+## 4) Hyperparameter tuning 
 
-### 4.1) Calculate a wide range of metrics for model evaluation {#41-calculate-a-wide-range-of-metrics-for-model-evaluation}
+### 4.1) Calculate a wide range of metrics for model evaluation 
 
 ``` python
 # This line will disappear in the portfolio page
@@ -112,7 +109,7 @@ for k in range(1, 200):
 metrics_df = pd.DataFrame.from_dict(scores_dict, orient='index').rename_axis('K').reset_index()
 ```
 
-### 4.2) Plot metrics for different k values {#42-plot-metrics-for-different-k-values}
+### 4.2) Plot metrics for different k values 
 
 ``` python
 # This line will disappear in the portfolio page
@@ -133,7 +130,7 @@ plt.show()
 
 ![](/images/knn_1.png)
 
-### 4.3) Determine number of neighbors that optimizes precision {#43-determine-number-of-neighbors-that-optimizes-precision}
+### 4.3) Determine number of neighbors that optimizes precision 
 
 For the sake of this analysis, we will consider that the company at hand
 is a website that provides wine recommendations. Thus, the cost of
@@ -144,9 +141,9 @@ seek to maximize precision.
 ideal_number_neighbours = metrics_df.sort_values('precision', ascending = False)['K'].to_list()[0]
 ```
 
-## 5) Evaluation of optimal model metrics {#5-evaluation-of-optimal-model-metrics}
+## 5) Evaluation of optimal model metrics 
 
-### 5.1) Classification Report, ROC Curve and Confusion Matrix {#51-classification-report-roc-curve-and-confusion-matrix}
+### 5.1) Classification Report, ROC Curve and Confusion Matrix 
 
 ``` python
 # This line will disappear in the portfolio page
