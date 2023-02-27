@@ -1,17 +1,18 @@
-# Unsupervised Learning 1 (Hyperparameter Tuning)
+### Machine Learning 4 (Unsupervised Learning P.1)
 
 > K-means Clustering, Hierarchical Clustering, Elbow Method, Silhouette Method, Dendograms and Cluster Visualization. 
 
 
-- toc: true 
-- badges: true
-- comments: true
-- categories: [K-Means Clustering, Hierarchical Clustering, Maximum Distances, Variance Minimization, Elbow Method, Silhouette Method, Dendograms, Optimal Number of Clusters, Web Scraping, Hyperparameter Tuning, Machine Learning]
-- image: images/unsupervised_methods_1.png
+`Topics: [K-Means Clustering, Hierarchical Clustering, Maximum Distances, Variance Minimization, Elbow Method, Silhouette Method, Dendograms, Optimal Number of Clusters, Web Scraping, Hyperparameter Tuning, Machine Learning]`
 
-## 1) Import libraries and define functions
+Here's the table of contents:
 
-### 1.1) Import libraries
+* TOC
+{:toc}
+
+### 1) Import libraries and define functions
+
+#### 1.1) Import libraries
 
 
 ```python
@@ -44,7 +45,7 @@ sns.set_theme()
 
 The data used in this analysis is obtained using web scraping, which was used to extract data regarding soccer players from the FIFA website https://sofifa.com/. Since the main purpose of the script is not to show how data scraping works, the explanation for this part will be concise. 
 
-### 2.1) Identify the URL of the pages that display the top players
+#### 2.1) Identify the URL of the pages that display the top players
 
 We will consider solely players with an overall rating of 75 or greater. 
 
@@ -66,7 +67,7 @@ url_top_players_list[:2]
 
 
 
-### 2.2) Identify the URL tof the pages with information for each player
+#### 2.2) Identify the URL tof the pages with information for each player
 
 
 ```python
@@ -81,7 +82,7 @@ for url in url_top_players_list:
 url_each_player_list = ['http://sofifa.com'+l for l in url_each_player_list if 'player/'in l]
 ```
 
-### 2.3) Determine which attributes we seek to analyze
+#### 2.3) Determine which attributes we seek to analyze
 
 
 ```python
@@ -90,7 +91,7 @@ attributes=['Crossing','Finishing','Heading Accuracy', 'Short Passing','Volleys'
  'Composure','Defensive Awareness','Standing Tackle','Sliding Tackle','GK Diving','GK Handling','GK Kicking','GK Positioning','GK Reflexes']
 ```
 
-### 2.4) Extract the information for each one of the players
+#### 2.4) Extract the information for each one of the players
 
 
 ```python
@@ -120,7 +121,7 @@ for link in url_each_player_list:
     dictionary_of_dictionaries[link.split('/')[5]] = dictionary_values
 ```
 
-### 2.5) Turn extracted features into data frames
+#### 2.5) Turn extracted features into data frames
 
 
 ```python
@@ -132,7 +133,7 @@ player_data_df = pd.concat(list_dfs)
 player_data_df.index.rename('Player', inplace=True)
 ```
 
-### 2.6) Extract information regarding player position
+#### 2.6) Extract information regarding player position
 
 
 ```python
@@ -164,7 +165,7 @@ for link in url_each_player_list:
     player_positions_dict[link.split('/')[5]] = list_strings
 ```
 
-### 2.7) Map the player position information to the data frame
+#### 2.7) Map the player position information to the data frame
 
 
 ```python
@@ -302,14 +303,14 @@ Notice that a player can receive multiple labels for his position. A player can 
 player_data_df['Position'] = player_data_df['Position'].apply(lambda list_words: Counter(list_words).most_common(1)[0][0])
 ```
 
-### 2.8) Export the data frame to avoid web scraping at every run
+#### 2.8) Export the data frame to avoid web scraping at every run
 
 
 ```python
 player_data_df.to_csv('data_players.csv', encoding='utf-8')
 ```
 
-### 2.9) Import the dataframe from the Github repository
+#### 2.9) Import the dataframe from the Github repository
 
 
 ```python
@@ -520,17 +521,17 @@ player_data_df.head(2)
 
 
 
-## 3) Split and scale data
+### 3) Split and scale data
 
 We do not have to split the dataset since this script regards unsupervised learning. Therefore, there is no target variable. Moreover, scaling is not required since the features are all in the same scale (between 0 and 100)
 
-##4) Determine the ideal number of clusters (K-means)
+### 4) Determine the ideal number of clusters (K-means)
 
 There are 2 common methods to determine the ideal number of clusters:
 - The "Elbow Method"
 - The "Silhouette Method"
 
-### 4.1) Determine the number of clusters with the Elbow Method
+#### 4.1) Determine the number of clusters with the Elbow Method
 
 We used 'calinski_harabasz' as the metric. Other metrics include 'distortion', 'silhouette' and 'calinski_harabasz'.
 
@@ -548,11 +549,10 @@ visualizer.show()
 plt.show()
 ```
 
+![png](/images/unsupervised_1.png)
 
-![png](output_33_0.png)
 
-
-### 4.2) Determine the number of clusters with the Silhouette Method
+#### 4.2) Determine the number of clusters with the Silhouette Method
 
 We do not want the "Elbow value" for the silhouette plot. Instead, we want to extract the number of clusters for which we have the maximum silhouette value. Thus, we extract this information and print it over the plot.
 
@@ -582,10 +582,10 @@ plt.show()
 ```
 
 
-![png](output_36_0.png)
+![png](/images/unsupervised_2.png)
 
 
-### 4.3) Interpret the results of the optimal number of clusters
+#### 4.3) Interpret the results of the optimal number of clusters
 
 The result is that the optimal number of clusters would be two. This might make intuitive sense. After all, goal keepers have a very different profile from other players. Let's see if this theory is true.
 
@@ -736,9 +736,9 @@ print('Accuracy of the prediction using clusters: ', accuracy_results, '%')
     Accuracy of the prediction using clusters:  100.0 %
     
 
-##5) Determine the ideal number of clusters (Hierarchical Clustering)
+### 5) Determine the ideal number of clusters (Hierarchical Clustering)
 
-### 5.1) Determine the number of clusters using a dendogram
+#### 5.1) Determine the number of clusters using a dendogram
 
 **Dendograms should not be used as a definite method for determining the number of clusters.** However, this visualization provides some insights into the possible clusters. We use the method "Ward" and the metric "Euclidian". However, there are different metrics and methods that can be used, as detailed below:
 - Method: single, complete, average, weighted, centroid, median, ward
@@ -762,17 +762,17 @@ plt.show()
 ```
 
 
-![png](output_44_0.png)
+![png](/images/unsupervised_3.png)
 
 
 - Once again the **distiction between 2 groups is very stark** (Goal Keepers in Orange VS Other players in Green).
 - This dendrogram suggests that a **"small" number of clusters between 2 and 6 would be ideal** to deal with this dataset. 
 
-### 5.2) Interpret the results of the optimal number of clusters
+#### 5.2) Interpret the results of the optimal number of clusters
 
 **We can apply 2 hierarchical clustering technique to see if our intepretation of the dendogram is correct.**
 
-#### 5.2.1) Run the first hierarchical clustering algorithm (maximum distances)
+##### 5.2.1) Run the first hierarchical clustering algorithm (maximum distances)
 
 
 ```python
@@ -918,7 +918,7 @@ print('Accuracy of the prediction using clusters: ', accuracy_results, '%')
     Accuracy of the prediction using clusters:  100.0 %
     
 
-#### 5.2.2) Run the second hierarchical clustering algorithm (variance minimization)
+##### 5.2.2) Run the second hierarchical clustering algorithm (variance minimization)
 
 
 ```python
@@ -1068,19 +1068,19 @@ print('Accuracy of the prediction using clusters: ', accuracy_results, '%')
     Accuracy of the prediction using clusters:  100.0 %
     
 
-## 6) Consider PCA for dimensionality reduction
+### 6) Consider PCA for dimensionality reduction
 
-### 6.1 ) Why PCA is appropriate in this analysis. 
+#### 6.1 ) Why PCA is appropriate in this analysis. 
 
 This technique is appropriate in this case since many of the features are highly correlated. In fact, FIFA's website automatically classifies many similar features into categories. For instance, it would be logical to use this technique to reduce the number of features in the category "Attacking". The same goes for each one of the 7 categories that are used to classify the 34 features.  
 
-### 6.2) Why we did not display the PCA analysis here
+#### 6.2) Why we did not display the PCA analysis here
 
 Our experiments using PCA led to results that were very similar to using domain knowledge to reduce the number of features. Since this second approach leads to an analysis that is easier to interpret, we will only show this simpler option. Other posts will cover PCA in contexts in which it actually leads to increases in performance.  
 
-## 7) Use domain knowledge for dimensionality reduction
+### 7) Use domain knowledge for dimensionality reduction
 
-### 7.1) Create new features as means of the variables of each type
+#### 7.1) Create new features as means of the variables of each type
 
 
 ```python
@@ -1093,7 +1093,7 @@ player_data_df['Defending Feature'] = player_data_df[['Defensive Awareness', 'St
 player_data_df['Goalkeeping Feature'] = player_data_df[['GK Diving', 'GK Handling', 'GK Kicking', 'GK Positioning','GK Reflexes']].mean(axis=1)
 ```
 
-### 7.2) Delete the original features
+#### 7.2) Delete the original features
 
 
 ```python
@@ -1101,11 +1101,11 @@ player_data_df.drop(attributes,axis=1, inplace = True)
 player_data_df.drop('Player',axis=1, inplace = True)
 ```
 
-## 8) Apply clustering techniques with 3 clusters 
+### 8) Apply clustering techniques with 3 clusters 
 
 We will consider 3 clusters to make it easier to compare with the 3 selected categories (goalkeepers, midfielders/defenders & forwards).
 
-### 8.1) Apply k-means
+#### 8.1) Apply k-means
 
 
 ```python
@@ -1300,7 +1300,7 @@ print('Accuracy of the prediction using clusters: ', accuracy_results, '%')
     Accuracy of the prediction using clusters:  89.9 %
     
 
-### 8.2) Run the first hierarchical clustering algorithm (maximum distances)
+#### 8.2) Run the first hierarchical clustering algorithm (maximum distances)
 
 
 ```python
@@ -1494,7 +1494,7 @@ print('Accuracy of the prediction using clusters: ', accuracy_results, '%')
     Accuracy of the prediction using clusters:  86.8 %
     
 
-### 8.3) Run the second hierarchical clustering algorithm (variance minimization)
+#### 8.3) Run the second hierarchical clustering algorithm (variance minimization)
 
 
 ```python
@@ -1688,9 +1688,9 @@ print('Accuracy of the prediction using clusters: ', accuracy_results, '%')
     Accuracy of the prediction using clusters:  89.4 %
     
 
-## 9) Visualize the results of the clustering methods (2D)
+### 9) Visualize the results of the clustering methods (2D)
 
-### 9.1) Bring together the results of all algorithms
+#### 9.1) Bring together the results of all algorithms
 
 
 ```python
@@ -1709,7 +1709,7 @@ hier_clustering_df_2['Algorithm'] = 'Hierar. Clustering (Variance min.)'
 all_algorithms_df = pd.concat([player_data_df, k_means_df, hier_clustering_df_1, hier_clustering_df_2]).reset_index()
 ```
 
-### 9.2) Create visualizations for 2 features at a time
+#### 9.2) Create visualizations for 2 features at a time
 
 
 ```python
@@ -1721,7 +1721,7 @@ plt.show()
 ```
 
 
-![png](output_82_0.png)
+![png](/images/unsupervised_4.png)
 
 
 
@@ -1734,10 +1734,10 @@ plt.show()
 ```
 
 
-![png](output_83_0.png)
+![png](/images/unsupervised_5.png)
 
 
-## 10) Visualize the results of the clustering methods (3D)
+### 10) Visualize the results of the clustering methods (3D)
 
 
 ```python
@@ -1770,5 +1770,5 @@ plt.show()
 ```
 
 
-![png](output_85_0.png)
+![png](/images/unsupervised_6.png)
 
