@@ -2,8 +2,7 @@
 
 > Multiple Linear Regression (OLS), Lasso Regression, Ridge Regression, Elastic Net Model, SGD Regressor and Regularization
 
-
-`Topics: [OLS, Multiple Linear Regression, Lasso Regression, Ridge Regression, Elastic Net Model, SGD Regressor, regularization]
+`Topics: [OLS, Multiple Linear Regression, Lasso Regression, Ridge Regression, Elastic Net Model, SGD Regressor, regularization]`
 
 Here's the table of contents:
 
