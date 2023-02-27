@@ -219,7 +219,8 @@ data.head(2)
 
 
 
-**A** = 'Age'  &ensp; |  &ensp; **S** = 'Sex'  &ensp; |  &ensp; **TCP** = 'Type of chest pain'  &ensp; |  &ensp; **RBP** = 'Resting blood pressure'  &ensp; |  &ensp; **C** = 'Cholesterol'  &ensp; |  &ensp; **BS** = 'Blood sugar'  &ensp; |  &ensp; **REE** = 'Resting electrocardiographic results'  &ensp; |  &ensp; **MHRA** =  'Maximum heart rate achieved'  &ensp; |  &ensp; **EIA** = 'Exercise induced angina'  &ensp; |  &ensp; **DIE** =  'ST depression induced by exercise'  &ensp; |  &ensp; **SPE** = 'Slope of the peak exercise ST segment'  &ensp; |  &ensp; **T** = 'Thalassemia'  &ensp; |  &ensp; **NMV** = 'Number of major vessels colored by flourosopy'  &ensp; |  &ensp; **HD** = 'Heart Disease?'
+**A** = 'Age'  &ensp; |  &ensp; **S** = 'Sex'  &ensp; |  &ensp; **TCP** = 'Type of chest pain'  &ensp; |  &ensp; **RBP** = 'Resting blood pressure'  &ensp; |  &ensp; **C** = 'Cholesterol'  &ensp; |  &ensp; **BS** = 'Blood sugar'  &ensp; |  &ensp; **REE** = 'Resting electrocardiographic results'  &ensp; |  &ensp; **MHRA** =  'Maximum heart rate achieved'  &ensp; |  &ensp; **EIA** = 'Exercise induced angina'  &ensp; |  &ensp;
+**DIE** =  'ST depression induced by exercise'  &ensp; |  &ensp; **SPE** = 'Slope of the peak exercise ST segment'  &ensp; |  &ensp; **T** = 'Thalassemia'  &ensp; |  &ensp; **NMV** = 'Number of major vessels colored by flourosopy'  &ensp; |  &ensp; **HD** = 'Heart Disease?'
 
 ### 3) Split and scale data
 
