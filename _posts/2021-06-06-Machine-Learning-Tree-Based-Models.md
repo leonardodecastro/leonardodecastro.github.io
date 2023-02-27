@@ -1,8 +1,13 @@
-## Tree-based algorithms (Hyperparameter Tuning)
+## Machine Learning 3 (Tree-based algorithms)
 
 > Decision Tree, Random Forest, Gradient Boost, XGboost, LightGBM, Catboost, Strategies to Fight Overfitting, Feature Importance Plots, Decision Trees Visualization, Random Search and Stratified K-fold for Cross Validation.
 
 `Topics: [Tree-Based Algorithms, Hyperparameter Tuning, Machine Learning, Decision Tree Classifier, Random Forest Classifier, Gradient Boosting Classifier, Extreme Gradient Boosting Classifier, Light Gradient Boosting Classifier, Categorical Booting Classifier, Feature Importance, Tree-based Algorithm Visualizations, Overfitting Reduction, Xgboost, LightGBM, Catboost, RandomizedSearchCV, Overfitting]`
+
+Here's the table of contents:
+
+* TOC
+{:toc}
 
 ### 1) Import libraries and define functions
 
