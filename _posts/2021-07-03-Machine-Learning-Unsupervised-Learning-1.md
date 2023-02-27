@@ -310,7 +310,7 @@ player_data_df['Position'] = player_data_df['Position'].apply(lambda list_words:
 player_data_df.to_csv('data_players.csv', encoding='utf-8')
 ```
 
-#### 2.9) Import the dataframe from the Github repository
+### 2.9) Import the dataframe from the Github repository
 
 
 ```python
@@ -321,10 +321,7 @@ player_data_df[['Player','Crossing','Finishing','Heading Accuracy','Short Passin
 
 
 
-
-  <div id="df-5d51b54c-a182-4d19-8dde-74000afb5717">
-    <div class="colab-df-container">
-      <div>
+<div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -348,39 +345,9 @@ player_data_df[['Player','Crossing','Finishing','Heading Accuracy','Short Passin
       <th>Heading Accuracy</th>
       <th>Short Passing</th>
       <th>Volleys</th>
-      <th>Dribbling</th>
-      <th>Curve</th>
-      <th>FK Accuracy</th>
-      <th>Long Passing</th>
-      <th>...</th>
-      <th>Penalties</th>
-      <th>Composure</th>
-      <th>Defensive Awareness</th>
-      <th>Standing Tackle</th>
-      <th>Sliding Tackle</th>
-      <th>GK Diving</th>
-      <th>GK Handling</th>
-      <th>GK Kicking</th>
-      <th>GK Positioning</th>
-      <th>GK Reflexes</th>
     </tr>
     <tr>
       <th>Position</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
       <th></th>
       <th></th>
       <th></th>
@@ -398,21 +365,6 @@ player_data_df[['Player','Crossing','Finishing','Heading Accuracy','Short Passin
       <td>72</td>
       <td>85</td>
       <td>83</td>
-      <td>93</td>
-      <td>80</td>
-      <td>69</td>
-      <td>71</td>
-      <td>...</td>
-      <td>80</td>
-      <td>88</td>
-      <td>26</td>
-      <td>34</td>
-      <td>32</td>
-      <td>13</td>
-      <td>5</td>
-      <td>7</td>
-      <td>11</td>
-      <td>6</td>
     </tr>
     <tr>
       <th>Midfielder/Defender</th>
@@ -422,101 +374,10 @@ player_data_df[['Player','Crossing','Finishing','Heading Accuracy','Short Passin
       <td>55</td>
       <td>93</td>
       <td>83</td>
-      <td>88</td>
-      <td>89</td>
-      <td>83</td>
-      <td>93</td>
-      <td>...</td>
-      <td>83</td>
-      <td>89</td>
-      <td>65</td>
-      <td>65</td>
-      <td>53</td>
-      <td>15</td>
-      <td>13</td>
-      <td>5</td>
-      <td>10</td>
-      <td>13</td>
     </tr>
   </tbody>
 </table>
-<p>2 rows × 35 columns</p>
 </div>
-      <button class="colab-df-convert" onclick="convertToInteractive('df-5d51b54c-a182-4d19-8dde-74000afb5717')"
-              title="Convert this dataframe to an interactive table."
-              style="display:none;">
-
-  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
-       width="24px">
-    <path d="M0 0h24v24H0V0z" fill="none"/>
-    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/>
-  </svg>
-      </button>
-
-  <style>
-    .colab-df-container {
-      display:flex;
-      flex-wrap:wrap;
-      gap: 12px;
-    }
-
-    .colab-df-convert {
-      background-color: #E8F0FE;
-      border: none;
-      border-radius: 50%;
-      cursor: pointer;
-      display: none;
-      fill: #1967D2;
-      height: 32px;
-      padding: 0 0 0 0;
-      width: 32px;
-    }
-
-    .colab-df-convert:hover {
-      background-color: #E2EBFA;
-      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
-      fill: #174EA6;
-    }
-
-    [theme=dark] .colab-df-convert {
-      background-color: #3B4455;
-      fill: #D2E3FC;
-    }
-
-    [theme=dark] .colab-df-convert:hover {
-      background-color: #434B5C;
-      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
-      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
-      fill: #FFFFFF;
-    }
-  </style>
-
-      <script>
-        const buttonEl =
-          document.querySelector('#df-5d51b54c-a182-4d19-8dde-74000afb5717 button.colab-df-convert');
-        buttonEl.style.display =
-          google.colab.kernel.accessAllowed ? 'block' : 'none';
-
-        async function convertToInteractive(key) {
-          const element = document.querySelector('#df-5d51b54c-a182-4d19-8dde-74000afb5717');
-          const dataTable =
-            await google.colab.kernel.invokeFunction('convertToInteractive',
-                                                     [key], {});
-          if (!dataTable) return;
-
-          const docLinkHtml = 'Like what you see? Visit the ' +
-            '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
-            + ' to learn more about interactive tables.';
-          element.innerHTML = '';
-          dataTable['output_type'] = 'display_data';
-          await google.colab.output.renderOutput(dataTable, element);
-          const docLink = document.createElement('div');
-          docLink.innerHTML = docLinkHtml;
-          element.appendChild(docLink);
-        }
-      </script>
-    </div>
-  </div>
 
 
 
