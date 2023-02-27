@@ -10,7 +10,7 @@
 
 Here's the table of contents:
 
-. TOC
+* TOC
 {:toc}
 
 ### 1) Import libraries
