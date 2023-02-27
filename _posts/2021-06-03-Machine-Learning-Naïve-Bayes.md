@@ -1,23 +1,24 @@
-# Naïve Bayes (Hyperparameter Tuning)
+## Machine Learning 2 (Naïve Bayes)
 
 > Naïve Bayes Algorithm Tuning, Grid Search, Cross Validation, Model Evaluation Metrics, Classification Report, Confusion Matrix and ROC Curve.
 
-- toc: true 
-- badges: true
-- comments: true
-- categories: [Naïve Bayes, Hyperparameter Tuning, Machine Learning, Grid Search, Cross Validation, Model Evaluation Metrics, Classification Report, Confusion Matrix, ROC Curve]
-- image: images/naive_bayes.png
+`Topics: [Naïve Bayes, Hyperparameter Tuning, Machine Learning, Grid Search, Cross Validation, Model Evaluation Metrics, Classification Report, Confusion Matrix, ROC Curve]`
 
-## 1) Import libraries and define functions
+Here's the table of contents:
 
-### 1.1) Install libraries
+* TOC
+{:toc}
+
+### 1) Import libraries and define functions
+
+#### 1.1) Install libraries
 
 
 ```python
 !pip install word2number &> /dev/null
 ```
 
-### 1.2) Import libraries
+#### 1.2) Import libraries
 
 
 ```python
@@ -38,15 +39,9 @@ nltk.download('stopwords')
 from nltk.corpus import stopwords
 STOPWORDS = set(stopwords.words('english'))
 ```
+   
 
-    C:\Users\Leonardo Castro\anaconda3\lib\site-packages\scipy\__init__.py:138: UserWarning: A NumPy version >=1.16.5 and <1.23.0 is required for this version of SciPy (detected version 1.24.2)
-      warnings.warn(f"A NumPy version >={np_minversion} and <{np_maxversion} is required for this version of "
-    [nltk_data] Downloading package stopwords to C:\Users\Leonardo
-    [nltk_data]     Castro\AppData\Roaming\nltk_data...
-    [nltk_data]   Unzipping corpora\stopwords.zip.
-    
-
-### 1.3) Define functions for later use
+#### 1.3) Define functions for later use
 
 
 ```python
@@ -65,9 +60,9 @@ def numeric_words_converter(list_words):
   return back_to_list
 ```
 
-## 2) Exploratory Data Analysis (EDA)
+### 2) Exploratory Data Analysis (EDA)
 
-### 2.1) Load File
+#### 2.1) Load File
 
 
 ```python
@@ -117,7 +112,7 @@ data.head(2)
 
 
 
-### 2.2) Clean sentences
+#### 2.2) Clean sentences
 
 - We will use a **function for the second cleaning procedure** since it would be complicated to do so with a lambda function.
 - The first cleaning procedure turns strings in each cell into lists. This means that the **lambda functions employed in this analysis are slightly different from lambda functions that are often used in dataframes without lists as cell values**.
@@ -197,14 +192,14 @@ data.head(2)
 
 
 
-### 2.3) Turn the target variable into binary variables (1 for Spam and 0 for Ham)
+#### 2.3) Turn the target variable into binary variables (1 for Spam and 0 for Ham)
 
 
 ```python
 data['Type of SMS'] = data['Type of SMS'].map({'spam':1,'ham':0})
 ```
 
-## 3) Split and scale data
+### 3) Split and scale data
 
 - Naïve Bayes is not affected by scaling. Thus, we will not scale the numbers obtained using the count vectorizer.
 - We neet to convert text into numerical data using the CountVectorizer so as to train a Naïve Bayes classifier.
@@ -221,7 +216,7 @@ y = data['Type of SMS']
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 1/3, random_state=42, stratify=y)
 ```
 
-## 4) Hyperparameter tuning 
+### 4) Hyperparameter tuning 
 
 - We apply the multinomial Naïve Bayes classifier, where the features are assumed to be generated from a simple multinomial distribution.
 
@@ -231,7 +226,7 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 1/3, rando
 
 - Guassian based Naive Bayes classifier imposes a Gaussian distribution on the occurance of a feature(word) in a message. The distribution is not continuous and further, it does make sense to impose a mean, std. devation for any feature (word) given that SMS messages could be about anything and assuming a Guassian distribution in unecessarily restrictive.
 
-### 4.1) Calculate a wide range of metrics for model evaluation
+#### 4.1) Calculate a wide range of metrics for model evaluation
 
 
 ```python
@@ -255,7 +250,7 @@ for alpha in np.arange(0.01, 10, 0.01):
 metrics_df = pd.DataFrame.from_dict(scores_dict, orient='index').rename_axis('alpha').reset_index()
 ```
 
-### 4.2) Plot metrics for different alpha values
+#### 4.2) Plot metrics for different alpha values
 
 
 ```python
@@ -280,7 +275,7 @@ plt.show()
 ![png](output_24_0.png)
 
 
-### 4.3) Determine the alpha value that optimizes precision
+#### 4.3) Determine the alpha value that optimizes precision
 
 For the sake of this analysis, we will consider that the effect of predicting that a certain message is SPAM when it is not is much more negative than not spotting a SPAM attempt. After all, if too many messages end up in the SPAM folder, clients might miss important information. On the other hand, too many SPAM messages might annoy users. Thus, we should seek to maximize f1 since it provides a balance between precision and recall.
 
@@ -289,9 +284,9 @@ For the sake of this analysis, we will consider that the effect of predicting th
 ideal_alpha_value = metrics_df.sort_values('f1', ascending = False)['alpha'].to_list()[0]
 ```
 
-## 5) Evaluation of optimal model metrics
+### 5) Evaluation of optimal model metrics
 
-### 5.1) Classification Report, ROC Curve and Confusion Matrix 
+#### 5.1) Classification Report, ROC Curve and Confusion Matrix 
 
 
 ```python
@@ -331,9 +326,9 @@ for visualizer in visualizers_list_test:
 
 We can see that the metrics for the training and test set are fairly similar, which indicates that there is **no problem with overfitting or underfitting**. Moreover, the ROC curve indicates that the classifier **outperforms a random classifier** (the baseline). 
 
-## 6) Final considerations
+### 6) Final considerations
 
-### 6.1) Is the classifier is well-suited for the data set?
+#### 6.1) Is the classifier is well-suited for the data set?
 
 1. The multinomial Naïve Bayes classifier is suitable for classification with discrete features. It represents the probability of counts among different categories, and thus multinomial naive Bayes is appropriate for features that represent counts or count rates. Notice that the features in our dataset are all categorial values as they are all the words. In addition, the features in our dataset are the counts of the words. As such, the Naïve Bayes classifier would be a good option for training the dataset on top of all;
 
