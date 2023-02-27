@@ -1,5 +1,5 @@
 
-## K-Nearest Neighbours (Hyperparameter Tuning)
+## Machine Learning 1 (K-Nearest Neighbours)
 
 > KNN Algorithm Tuning, Grid Search, Cross Validation, Model Evaluation
 > Metrics, Classification Report, Confusion Matrix and ROC Curve.
