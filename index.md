@@ -1,1 +1,1 @@
-![Image of fast.ai logo](images/main_image.png)
+![png](images/main_image.png)
