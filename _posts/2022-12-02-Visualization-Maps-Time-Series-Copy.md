@@ -202,6 +202,7 @@ plot(fig, filename='graph.html')
 
 # Step 6: Show the map
 fig.show()
+```
 
 ![html](/images/graph.html)
 
