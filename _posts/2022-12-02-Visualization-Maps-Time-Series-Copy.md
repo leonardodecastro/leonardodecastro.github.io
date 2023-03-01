@@ -203,5 +203,5 @@ plot(fig, filename='graph.html')
 # Step 6: Show the map
 fig.show()
 
-![Graph](graph.png)
+![Graph](/images/graph.html)
 
