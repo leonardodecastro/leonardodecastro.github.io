@@ -204,5 +204,5 @@ plot(fig, filename='graph.html')
 fig.show()
 ```
 
-![html](/images/graph.html)
+![html](/images/graph_1.html)
 
