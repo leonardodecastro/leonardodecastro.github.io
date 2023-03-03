@@ -1,3 +1,3 @@
-### Github Repository (all Jupyter Notebooks)
+### Data Science Blog
 
-[GitHub](https://github.com/leonardodecastro/data_science_blog/tree/master/_notebooks)
+[Link](https://leonardodecastro.github.io/)
